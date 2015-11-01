@@ -55,6 +55,11 @@ var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
 var HTMLonlineURL = '<br><a href="#">%data%</a>';
 
+var HTMLcertifications = '<h3>Professional Certifications</h3>';
+var HTMLcertificationCertificate = '<a href="#">%data%';
+var HTMLcertificationIssuer = ' -- %data%</a>';
+var HTMLcertificationDate = '<div class="date-text">%data%</div>';
+
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
@@ -128,14 +133,14 @@ function initializeMap() {
 
     // iterates through school locations and appends each location to
     // the locations array
-    for (var name in education.schools) {
-      locations.push(education.schools[name].location);
+    for (var school in education.schools) {
+      locations.push(education.schools[school].location);
     }
 
     // iterates through work locations and appends each location to
     // the locations array
-    for (var company in work.jobs) {
-      locations.push(work.jobs[company].location);
+    for (var job in work.jobs) {
+      locations.push(work.jobs[job].location);
     }
     return locations;
   }

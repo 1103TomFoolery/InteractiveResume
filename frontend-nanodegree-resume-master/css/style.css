@@ -18,6 +18,11 @@
   padding-right: 5%;
 }
 
+.project-entry {
+  display: inline-block;
+  width: 300px;
+}
+
 h1 {
   font-size: 40px;
   color: #F5A623;
@@ -121,7 +126,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color:  #585858;
 }
 
 .flex-box {

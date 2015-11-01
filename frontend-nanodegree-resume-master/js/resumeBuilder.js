@@ -13,7 +13,7 @@ var bio = {
 	"contacts" : {
 		"mobile" : "(408) 829-5342",
 		"email" : "tjallen1103@gmail.com",
-		"github" : "tja01",
+		"github" : "1103TomFoolery",
 		"twitter" : "@tallen1103",
 		"location" : "San Diego"
 	},
@@ -25,6 +25,34 @@ var bio = {
 	"welcomeMessage" : "Welcome to my resume page!"
 };
 
+bio.display = function() {
+
+	// $("#bio").append(HTMLbioStart);
+	$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
+	$("#header").prepend(HTMLheaderName.replace("%data%",bio.name));
+	$("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
+	$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+	$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+	$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+	$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+	$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+	$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+	$("#header").append(HTMLskillsStart);
+
+	if(bio.role === "Web Developer") {
+		for(skill in bio.webDevSkills) {
+			$("#skills").append(HTMLskills.replace("%data%", bio.webDevSkills[skill]));
+		};
+
+	};
+
+	if(bio.role === "Agile Change Agent") {
+		for(skill in bio.agileSkills) {
+			$("#skills").append(HTMLskills.replace("%data%", bio.agileSkills[skill]));
+		};
+	};
+}
+bio.display();
 
  var work = {
  	"jobs" : [
@@ -69,6 +97,19 @@ var bio = {
  	]
 };
 
+work.display = function() {
+	for(j in work.jobs) {
+		$("#workExperience").append(HTMLworkStart);
+		var job = HTMLworkEmployer.replace("%data%", work.jobs[j].company);
+		job = job + "       " + work.jobs[j].position;
+		$(".work-entry:last").append(job);
+		$(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[j].location));
+		$(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[j].tenure));
+		$(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[j].description));
+	};
+}
+work.display();
+
 var education = {
 	"schools" : [
 		{ "name" : "Stanford University",
@@ -89,7 +130,8 @@ var education = {
 	    "degree": "Bachelor of Science",
 	    "graduation" : "1987"
 	  }
-/*	  ],
+	  ],
+
 	  "onlineCourses" :[
 	  	{
 	  		"Name" : "How to use GitHub",
@@ -114,98 +156,33 @@ var education = {
 	  		"onlineSchool" : "Udacity",
 	  		"dates" : "April 2015",
 	  		"url" : "https://www.udacity.com/course/viewer#!/c-ud804/l-2239648539"
-	  	}*/
+	  	}
+	  ],
 
-	  ]
-	  /*
 	  "certifications" : [
 	    { "certificate" : "Advanced Project Management",
 		  "issuedBy" : "Stanford University - Continuing Education",
-		  "url" : "http://scpd.stanford.edu/public/category/courseCategoryCertificateProfile.do?method=load&certificateId=1060516#searchResults",
 		  "completed" : "May 2013"},
 
 		{ "certificate" : "Certified Scrum Master (CSM)",
 		  "issuedBy" : "Scrum Alliance",
-		  "url" : "https://www.scrumalliance.org/certifications/practitioners/certified-scrummaster-csm",
 		  "completed": "October 2009"},
 
 		{ "certificate" : "Certified Scrum Product Owner (CSPO)",
 		  "issuedBy" : "Scrum Alliance",
-		  "url" : "https://www.scrumalliance.org/certifications/practitioners/cspo-certification",
 		  "completed" : "May 2013"},
 
 		 { "certificate" : "Certified Scrum Professional (CSP)",
 		   "issuedBy" : "Scrum Alliance",
-		   "url" : "https://www.scrumalliance.org/certifications/practitioners/csp-certification",
 		   "completed" : "May 2014"},
 
 		 { "certificate" : "Project Management Professional (PMP)",
 		   "issuedBY" : "Project Management Institute (PMI)",
-		   "url" : "http:www.pmi.org",
 		   "completed" : "December 2002"}
-	  ]*/
+	  ]
 };
 
-
-
-var projects = {
-	
-	projArray : [{
-		"name" : "Front End Portfolio",
-		"dates" : "October 15, 2015 - present",
-		"description" : "Front end projects using HTML, JavaScript and Bootstrap",
-		"img" : "images/197x148.gif"
-	},
-	{
-		"name" : "Full Stack Projects",
-		"dates" : "June 2015 - present",
-		"description" : "Full stack web applications mainly using Python",
-		"img" : "images/197x148.gif"
-	},
-	{
-		"name" : "Data Science Projects",
-		"dates" : "October 3, 2015 - present",
-		"description" : "Data Science projects using R",
-		"img" : "images/197x148.gif"
-	}]
-};
-
-
-$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
-$("#header").prepend(HTMLheaderName.replace("%data%",bio.name));
-$("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
-$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
-$("#header").append(HTMLskillsStart);
-if(bio.role === "Web Developer") {
-	for(skill in bio.webDevSkills) {
-		$("#skills").append(HTMLskills.replace("%data%", bio.webDevSkills[skill]));
-	};
-
-};
-if(bio.role === "Agile Change Agent") {
-	for(skill in bio.agileSkills) {
-		$("#skills").append(HTMLskills.replace("%data%", bio.agileSkills[skill]));
-	};
-};
-function displayWork() {
-	for(j in work.jobs) {
-		$("#workExperience").append(HTMLworkStart);
-		var job = HTMLworkEmployer.replace("%data%", work.jobs[j].company);
-		job = job + "       " + work.jobs[j].position;
-		$(".work-entry:last").append(job);
-		$(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[j].location));
-		$(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[j].tenure));
-		$(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[j].description));
-	};
-}
-displayWork();
-
-function displayEd() {
+education.display = function() {
 	for(j in education.schools){
 		$("#education").append(HTMLschoolStart);
 		$(".education-entry:last").append(HTMLschoolName.replace("%data%",education.schools[j].name));
@@ -215,7 +192,7 @@ function displayEd() {
 		$(".education-entry:last").append(HTMLschoolDegree.replace("%data%", education.schools[j].degree));
 	};
 
-		$("#education").append(HTMLonlineClasses);
+	$("#education").append(HTMLonlineClasses);
 	for(ol in education.onlineCourses) {
 		$("#education").append(HTMLschoolStart);
 		$(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[ol].Name));
@@ -223,14 +200,53 @@ function displayEd() {
 		$(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[ol].dates));
 		$(".education-entry:last").append(HTMLonlineURL.replace("%data%", education.onlineCourses[ol].url));
 	};
+	$("#education").append(HTMLcertifications);
+	for(c in education.certifications) {
+		$("#education").append(HTMLschoolStart);
+		$(".education-entry:last").append(HTMLcertificationCertificate.replace("%data%", education.certifications[c].certificate));
+		$(".education-entry:last").append(HTMLcertificationIssuer.replace("%data%", education.certifications[c].issuedBy));
+		$(".education-entry:last").append(HTMLcertificationDate.replace("%data%", education.certifications[c].completed));
+	}
+};
+education.display();
+
+var projects = {
+	
+	projArray : [{
+		"img" : "images/197x148.gif",
+		"name" : "Front End Portfolio",
+		"dates" : "October 15, 2015 - present",
+		"description" : "HTML, JQuery and Bootstrap"
+	},
+	{
+		"img" : "images/197x148.gif",
+		"name" : "Full Stack Projects",
+		"dates" : "June 2015 - present",
+		"description" : "Mainly using Python"
+	},
+	{
+		"img" : "images/197x148.gif",
+		"name" : "Data Science Projects",
+		"dates" : "October 3, 2015 - present",
+		"description" : "Using R"
+	}]
+};
+projects.display = function() {
+	for(p in projects.projArray) {
+		$("#projects").append(HTMLprojectStart);
+		$(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projArray[p].name));
+		$(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.projArray[p].dates));
+		$(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.projArray[p].description));
+		$(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projArray[p].img));
+	}
 }
-displayEd();
+projects.display();
 
 $("#")
 $(document).click(function(loc) {
 	var x=loc.pageX;
 	var y=loc.pageY;
-    //console.log("x-coordinate = ", x, " y-coordinate = ", y);
+    console.log("x-coordinate = ", x, " y-coordinate = ", y);
 	logClicks(x,y);
 });
 
@@ -245,17 +261,8 @@ function inName(name) {
 
 $("#main").append(internationalizeButton);
 
-projects.display = function() {
-	for(p in projects.projArray) {
-		$("#projects").append(HTMLprojectStart);
-		$(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projArray[p].name));
-		$(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.projArray[p].dates));
-		$(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.projArray[p].description));
-		$(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projArray[p].img));
-	}
-}
-projects.display();
+
 
 // Add map of places I've lived and worked
 $("#mapDiv").append(googleMap);
-initializeMap();
+// initializeMap();
